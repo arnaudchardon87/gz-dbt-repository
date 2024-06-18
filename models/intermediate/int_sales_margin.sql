@@ -35,6 +35,7 @@ SELECT
 date_date,
 orders_id,
 products_id,
+CONCAT(orders_id,"_",products_id) as primary_key_sales_margin,
 revenue,
 quantity,
 purchase_price,
