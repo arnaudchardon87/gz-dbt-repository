@@ -13,7 +13,7 @@ renamed as (
         orders_id,
         pdt_id as products_id,
         revenue,
-        quantity
+        CAST(quantity as FLOAT64) as quantity
 
     from source
 
