@@ -10,7 +10,7 @@ sources :
         description : sales of greenweez
         freshness:
           warn_after: {count : 90, period : day}
-        loaded_at_field: "CAST(date_date as TIMESTAMP)"
+        loaded_at_field: "CAST(date_date as dTIMESTAMP)"
         columns:
           - name: orders_id || '-' || pdt_id
             tests:
