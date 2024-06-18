@@ -1,0 +1,13 @@
+version: 2
+
+sources :
+  - name: raw
+    schema: gz_raw_data
+    tables:
+      - name : sales #Alias on sales table
+        identifier : raw_gz_sales #Name on Bigquery
+      - name : products #Alias on products table
+        identifier : raw_gz_product #Name on Bigquery
+      - name : ship #Alias on ship table
+        identifier : raw_gz_ship #Name on Bigquery
+  
