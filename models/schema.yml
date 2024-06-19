@@ -1,0 +1,62 @@
+version: 2
+
+sources :
+  - name: raw
+    schema: gz_raw_data
+    description : greenweez raw data source
+    tables:
+      - name : sales #Alias on sales table
+        identifier : raw_gz_sales #Name on Bigquery
+        description : sales of greenweez
+        freshness:
+          warn_after: {count : 90, period : day}
+        loaded_at_field: "CAST(date_date as TIMESTAMP)"
+        columns:
+          - name: orders_id || '-' || pdt_id
+            tests:
+            - unique
+            - not_null
+          - name : date_date
+            description : date sales
+          - name : orders_id
+            description : orders id sales
+          - name : pdt_id
+            description : products id sales
+          - name : revenue
+            description : revenue sales
+          - name : quantity
+            description : quantity sales 
+
+      - name : products #Alias on products table
+        identifier : raw_gz_product #Name on Bigquery
+        description : products of greenweez
+        columns : 
+          - name : products_id
+            description : products id
+            tests : 
+              - unique
+              - not_null
+          - name : purchSE_PRICE
+            description : Price purchase
+      - name : ship #Alias on ship table
+        identifier : raw_gz_ship #Name on Bigquery
+        description : ship of greenweez
+        columns :
+          - name : orders_id
+            description : ids orders
+            tests : 
+              - unique
+              - not_null
+          - name : shipping_fee
+            description : fee of shipping
+          - name : shipping_fee_1
+            description : fee of shipping (repetition)
+          - name : logCost
+            description : Costs of logistic
+          - name : ship_cost
+            description : Cost of shipping
+
+  
+
+          
+  
