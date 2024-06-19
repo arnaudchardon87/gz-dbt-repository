@@ -55,8 +55,115 @@ sources :
             description : Costs of logistic
           - name : ship_cost
             description : Cost of shipping
+      - name : adwords #Alias on adwords table
+        identifier : raw_gz_adwords #Name on Bigquery
+        description : adwords campaign results
+        columns :
+          - name: date_date || '-' || campaign_key
+            tests:
+            - unique
+            - not_null
+          - name : date_date
+            description : date adwords
+          - name : paid_source
+            description : paid source adwords
+          - name : campaign_key
+            description : campaign key adwords
+          - name : camPGN_name
+            description : campaign name adwords
+          - name : ads_cost
+            description : costs ads adwords
+          - name : impression
+            description : nb impression adwords
+          - name : click
+            description : nb clicks adwords
+      - name : bing
+        identifier : raw_gz_bing
+        columns :
+          - name: date_date || '-' || campaign_key
+            tests:
+            - unique
+            - not_null
+          - name : date_date
+          - name : paid_source
+          - name : campaign_key
+          - name : camPGN_name
+          - name : ads_cost
+          - name : impression
+          - name : click
+      - name : facebook
+        identifier : raw_gz_facebook
+        columns :
+          - name: date_date || '-' || campaign_key
+            tests:
+            - unique
+            - not_null
+          - name : date_date
+            tests:
+            - not_null
+          - name : paid_source
+          - name : campaign_key
+          - name : camPGN_name
+          - name : ads_cost
+          - name : impression
+          - name : click
+      - name : criteo
+        identifier : raw_gz_criteo
+        columns :
+          - name: date_date || '-' || campaign_key
+            tests:
+            - unique
+            - not_null
+          - name : date_date
+          - name : paid_source
+          - name : campaign_key
+          - name : camPGN_name
+          - name : ads_cost
+          - name : impression
+          - name : click
 
-  
 
-          
-  
+models :
+  - name : campaigns int
+    identifier : int_campaigns
+    columns :
+      - name: date_date || '-' || campaign_key
+        tests:
+        - unique
+        - not_null
+      - name : date_date
+      - name : paid_source
+      - name : campaign_key
+      - name : campaign_name
+      - name : ads_cost
+      - name : impression
+      - name : click
+  - name : campaigns day
+    identifier : int_campaigns_day
+    columns :
+      - name: date_date
+        description : dates aggregated
+        tests : 
+          - unique
+          - not_null            
+      - name : ads_cost
+        description : costs of ads
+      - name : ads_impression
+        description : number of impressions
+      - name : ads_clicks
+        description : number of clicks
+  - name : campaigns day
+    identifier : int_campaigns_day
+    columns :
+      - name: date_date
+        description : dates aggregated
+        tests : 
+          - unique
+          - not_null            
+      - name : ads_cost
+        description : costs of ads
+      - name : ads_impression
+        description : number of impressions
+      - name : ads_clicks
+        description : number of clicks
+
