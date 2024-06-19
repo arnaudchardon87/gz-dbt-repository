@@ -138,8 +138,7 @@ models :
       - name : ads_cost
       - name : impression
       - name : click
-  - name : campaigns day
-    identifier : int_campaigns_day
+  - name : int_campaigns_day
     columns :
       - name: date_date
         description : dates aggregated
@@ -152,18 +151,22 @@ models :
         description : number of impressions
       - name : ads_clicks
         description : number of clicks
-  - name : campaigns day
-    identifier : int_campaigns_day
+  - name : finance_campaigns_day
     columns :
       - name: date_date
         description : dates aggregated
         tests : 
           - unique
           - not_null            
+      - name : ads_margin
+        description : margin of ads
+      - name : average_basket
+        description : average of basket
+      - name : operational_margin
+        description : operational margin
       - name : ads_cost
         description : costs of ads
       - name : ads_impression
-        description : number of impressions
+        description : impression of ads
       - name : ads_clicks
         description : number of clicks
-
